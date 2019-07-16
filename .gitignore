@@ -1,0 +1,6 @@
+*.theos
+.DS_Store
+control
+UIApplication.h
+*.deb
+
