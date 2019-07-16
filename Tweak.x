@@ -6,10 +6,16 @@ void addBanner(UIView* keyWindow){
 	}
 }
 
+%ctor {
+	banner = [[UIView alloc] initWithFrame:CGRectMake(0, 265, 200, 500)];
+	[banner setTag:108];
+	[banner setAlpha:1];
+	[banner setBackgroundColor:[UIColor blackColor]];
+}
+
 %hook UIApplication
 -(void) sendEvent:(UIEvent*)event{
 	%orig;
-	banner = [[UIView alloc] initWithFrame:CGRectMake(0, 265, 200, 500)];
 	/*NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
 	if ([bundleId isEqualToString:@"com.bilibili.star"]) {
 		window = [UIApplication sharedApplication].keyWindow;
@@ -18,9 +24,6 @@ void addBanner(UIView* keyWindow){
 		window = [UIApplication sharedApplication].keyWindow;
 		addBanner(window);
 	}*/
-	[banner setTag:108];
-	[banner setAlpha:1];
-	[banner setBackgroundColor:[UIColor blackColor]];
 	UIView *keyWindow = [UIApplication sharedApplication].keyWindow;
 	addBanner(keyWindow);
 }
