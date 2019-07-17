@@ -7,7 +7,8 @@ void addBanner(UIView* keyWindow){
 }
 
 %ctor {
-	banner = [[UIView alloc] initWithFrame:CGRectMake(0, 265, 200, 500)];
+	//banner = [[UIView alloc] initWithFrame:CGRectMake(0, 265, 200, 500)];
+	banner = [[UIView alloc] initWithFrame:CGRectMake(265, 0, 500, 200)];
 	[banner setTag:108];
 	[banner setAlpha:1];
 	[banner setBackgroundColor:[UIColor blackColor]];
@@ -16,15 +17,15 @@ void addBanner(UIView* keyWindow){
 %hook UIApplication
 -(void) sendEvent:(UIEvent*)event{
 	%orig;
-	/*NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
+	//UIView *keyWindow = [UIApplication sharedApplication].keyWindow;
+	NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
 	if ([bundleId isEqualToString:@"com.bilibili.star"]) {
-		window = [UIApplication sharedApplication].keyWindow;
-		addBanner(window);
+		UIView *keyWindow = [UIApplication sharedApplication].keyWindow;
+		addBanner(keyWindow);
 	} else if([bundleId isEqualToString:@"jp.co.craftegg.band"]){
-		window = [UIApplication sharedApplication].keyWindow;
-		addBanner(window);
-	}*/
-	UIView *keyWindow = [UIApplication sharedApplication].keyWindow;
-	addBanner(keyWindow);
+		UIView *keyWindow = [UIApplication sharedApplication].keyWindow;
+		addBanner(keyWindow);
+	}
+	//addBanner(keyWindow);
 }
 %end

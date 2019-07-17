@@ -1,1 +1,9 @@
-{ Filter = { Bundles = ( "com.apple.springboard" ); }; }
+{
+	Filter = {
+		Bundles = (
+			"jp.co.craftegg.band",
+			"com.bilibili.star",
+			"com.apple.springboard",
+		);
+	};
+}
